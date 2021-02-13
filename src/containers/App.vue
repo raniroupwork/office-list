@@ -1,6 +1,7 @@
-<template lang="pug">
-  div#app
-    h1 Offices
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -10,6 +11,6 @@ export default {
 };
 </script>
 
-<style lang="sass">
-#app
+<style>
+
 </style>

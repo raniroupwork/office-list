@@ -16,6 +16,7 @@
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
     "vue-tailwind": "^2.1.1",
     "vuex": "^3.4.0"
   },
@@ -35,8 +36,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
-    "pug": "^3.0.0",
-    "pug-plain-loader": "^1.1.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
