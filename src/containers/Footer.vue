@@ -1,14 +1,14 @@
 <template>
-  <main class='main'>
-      <DisplayText text="MAIN"></DisplayText>
-  </main>
+  <footer class='footer'>
+      <DisplayText text="FOOTER"></DisplayText>
+  </footer>
 </template>
 
 <script>
 import DisplayText from '../components/atoms/topography/DisplayText.vue';
 
 export default {
-  name: 'Main',
+  name: 'Header',
   components: {
     DisplayText,
   },

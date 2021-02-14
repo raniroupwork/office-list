@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import DisplayText from '../components/atoms/topography/DisplayText.vue';
+import Main from '../containers/Main.vue';
 
 Vue.use(Router);
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'DisplayText',
-      component: DisplayText,
+      name: 'Main',
+      component: Main,
     },
   ],
 });
