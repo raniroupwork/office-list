@@ -1,6 +1,6 @@
 <template>
   <header class='header'>
-      <DisplayText>Hader</DisplayText>
+      <DisplayText>Offices</DisplayText>
   </header>
 </template>
 
