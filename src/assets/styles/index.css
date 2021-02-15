@@ -2,5 +2,8 @@
 
 @tailwind base;
 @tailwind components;
-@import './buttons/btn.css';
+
+@import './buttons/__index.css';
+@import './typography/__index.css';
+
 @tailwind utilities;

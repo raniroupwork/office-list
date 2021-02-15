@@ -11,10 +11,20 @@ module.exports = {
         'accent-red': '#FF7B92',
         'background-color': '#FFFFFF',
       },
+      fontSize: {
+        'display': '4rem',
+      },
+      lineHeight: {
+        'display': '4rem',
+        'micro': '1.125rem',
+      },
+      letterSpacing: {
+        'meta': '0.02em',
+      },
       fontFamily: {
-        sans: ['Proxima Nova Rg'],
-        extralight: ['Proxima Nova Th'],
-        light: ['Proxima Nova Lt'],
+        sans: ['Proxima Nova Lt'],
+        bold: ['Proxima Nova Rg'],
+        light: ['Proxima Nova Th'],
       },
     },
   },
