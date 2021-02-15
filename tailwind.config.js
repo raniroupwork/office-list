@@ -11,6 +11,11 @@ module.exports = {
         'accent-red': '#FF7B92',
         'background-color': '#FFFFFF',
       },
+      fontFamily: {
+        sans: ['Proxima Nova Rg'],
+        extralight: ['Proxima Nova Th'],
+        light: ['Proxima Nova Lt'],
+      },
     },
   },
   variants: {

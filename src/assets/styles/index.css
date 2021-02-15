@@ -1,6 +1,6 @@
+@import url('../../../node_modules/font-proxima-nova/style.css');
+
 @tailwind base;
 @tailwind components;
-
 @import './buttons/btn.css';
-
 @tailwind utilities;
