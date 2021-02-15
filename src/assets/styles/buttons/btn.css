@@ -1,0 +1,31 @@
+.btn {
+    @apply inline-block text-sm px-3 py-2 rounded tracking-wider font-semibold transition duration-200 ease-in-out;
+}
+
+.btn:focus {
+    @apply outline-none ring-2;
+}
+
+.btn:hover {
+    @apply  bg-primary-dark;
+}
+
+.btn-primary {
+    @apply bg-accent-blue text-white;
+}
+
+.btn-primary:disabled {
+    @apply bg-primary cursor-not-allowed;
+}
+
+.btn-secondary {
+    @apply bg-transparent text-primary-dark border-primary-dark border;
+}
+
+.btn-secondary:hover {
+    @apply  text-white;
+}
+
+.btn-secondary:disabled {
+    @apply cursor-not-allowed bg-transparent text-primary-dark;
+}

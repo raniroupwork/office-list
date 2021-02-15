@@ -1,20 +1,16 @@
 import DisplayText from '../../../components/atoms/topography/DisplayText.vue';
 
 export default {
-  title: 'atoms/topography/DisplayText',
+  title: 'atoms/Topography/DisplayText',
   component: DisplayText,
-  argTypes: {
-    text: { control: 'Display Text' },
-  },
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { DisplayText },
-  template: '<DisplayText :text="text" />',
+  template: '<DisplayText>Offices</DisplayText>',
 });
 
 export const Title = Template.bind({});
 Title.args = {
-  text: 'Offices',
 };

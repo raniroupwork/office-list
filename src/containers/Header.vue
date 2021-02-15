@@ -1,6 +1,6 @@
 <template>
   <header class='header'>
-      <DisplayText text="HEADER"></DisplayText>
+      <DisplayText>Hader</DisplayText>
   </header>
 </template>
 

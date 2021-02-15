@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@storybook/addon-storysource": "^6.1.18",
     "@tailwindcss/forms": "^0.2.1",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",

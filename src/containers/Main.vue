@@ -1,6 +1,6 @@
 <template>
   <main class='main'>
-      <DisplayText text="MAIN"></DisplayText>
+      <DisplayText>Main</DisplayText>
   </main>
 </template>
 
