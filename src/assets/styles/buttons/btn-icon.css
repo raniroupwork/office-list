@@ -7,5 +7,5 @@
 }
 
 .btn-icon:hover {
-    @apply  outline-none;
+    @apply  outline-none bg-primary-light;
 }

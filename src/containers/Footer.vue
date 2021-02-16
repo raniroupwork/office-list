@@ -1,7 +1,8 @@
 <template>
-  <footer class='footer text-center'>
+  <footer class='footer text-center pb-60'>
     <BodyText>This Project is for test purpose only.</BodyText>
     <LinkText
+      class="uppercase text-sm tracking-wide"
       href="https://www.dogandponystudios.com"
       target="_blank">
         www.dogandponystudios.com

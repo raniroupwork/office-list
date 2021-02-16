@@ -1,12 +1,16 @@
 <template>
-    <button :disabled='disabled' :text='text' class="btn-icon">
+    <button :disabled='disabled' :text='text' class="btn-icon max-w-24 w-24">
       <slot></slot>
-      <BodyText class='text-xs ml-2'>{{ text }}</BodyText>
+      <BodyText
+        style="color: inherit"
+        class='text-xs ml-2'>
+          {{ text }}
+      </BodyText>
     </button>
 </template>
 
 <script>
-import BodyText from '../typography/BodyText.vue'
+import BodyText from '../typography/BodyText.vue';
 
 export default {
   name: 'Button',

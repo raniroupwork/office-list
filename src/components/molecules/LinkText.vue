@@ -1,6 +1,8 @@
 <template>
     <a :href='href' class='link-text'>
-      <MetaText class='text-accent-blue tracking-wider mt-4'>
+      <MetaText
+        style="color: inherit; font-size: inherit"
+        class='tracking-wider mt-4'>
         <slot></slot>
       </MetaText>
     </a>
@@ -10,8 +12,8 @@
 import MetaText from '../atoms/typography/MetaText.vue';
 
 export default {
-  components: { MetaText },
   name: 'LinkText',
+  components: { MetaText },
   props: {
     href: {
       type: String,
@@ -20,3 +22,6 @@ export default {
   },
 };
 </script>
+
+<style>
+</style>

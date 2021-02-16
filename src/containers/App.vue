@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class='place-items-center relative bg-background-body w-full h-screen'>
+  <div id="app" class='place-items-center relative bg-background-body w-full h-full'>
     <Header />
     <router-view/>
     <Footer />
@@ -18,7 +18,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

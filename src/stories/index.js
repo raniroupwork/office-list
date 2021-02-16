@@ -3,6 +3,7 @@ export {
   BodyText,
   Button,
   DisplayText,
+  HeaderText,
   IconButton,
 } from './atoms';
 
