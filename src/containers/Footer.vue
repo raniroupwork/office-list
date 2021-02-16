@@ -1,5 +1,5 @@
 <template>
-  <footer class='footer text-center pb-60'>
+  <footer class='footer text-center mb-12'>
     <BodyText>This Project is for test purpose only.</BodyText>
     <LinkText
       class="uppercase text-sm tracking-wide"

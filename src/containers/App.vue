@@ -1,5 +1,7 @@
 <template>
-  <div id="app" class='place-items-center relative bg-background-body w-full h-full'>
+  <div
+    id="app"
+    class='place-items-center relative bg-background-body w-full h-full overflow-hidden'>
     <Header />
     <router-view/>
     <Footer />

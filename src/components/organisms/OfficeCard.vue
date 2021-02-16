@@ -1,45 +1,54 @@
 <template>
-    <section class='office-card shadow-xl'>
-        <header class='bg-primary p-6 rounded-t-md cursor-pointer
+    <div class='office-card shadow-xl mb-6'>
+        <header :class="isOpen ? 'bg-primary':'bg-background-card rounded-b-md'"
+          class=' p-6 rounded-t-md
                 flex flex-row justify-between items-center relative'>
             <div class='office-card__header-text'>
-                <HeaderText class='text-primary-light mb-2'>Headquarters</HeaderText>
-                <BodyText class='text-primary-light'>3763 W. Dallas St.</BodyText>
+                <HeaderText :class="isOpen ? 'text-primary-light':'text-primary-dark'" class='mb-2'>
+                  Headquarters
+                </HeaderText>
+                <BodyText :class="isOpen ? 'text-primary-light':'text-primary'">
+                  3763 W. Dallas St.
+                </BodyText>
             </div>
-            <!-- <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M1 1L9 9L17 1"
-                  stroke="#33A6BA"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-            </svg> -->
-            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg v-if="isOpen" @click="toggleCard()" class='cursor-pointer' width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17 9L9 1L1 9"
                   stroke="white"
                   stroke-linecap="round"
                   stroke-linejoin="round"/>
             </svg>
+            <svg v-else @click="toggleCard()" class='cursor-pointer' width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1 1L9 9L17 1"
+                  stroke="#33A6BA"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            </svg>
         </header>
-        <ul class='bg-background-card p-6'>
-            <li class='mb-3'>
-                <HeaderText>Hellena John</HeaderText>
-            </li>
-            <li class='mb-6'>
-                <BodyText class='font-bold text-primary-dark'>Software Tester</BodyText>
-            </li>
-            <li class='mb-6'>
-                <LinkText
-                  href="mailto:georgia.young@example.com">
-                    georgia.young@example.com
-                </LinkText>
-            </li>
-            <li class='mb-6'>
-                <BodyText class='font-bold text-primary-dark'>(808) 555-0111</BodyText>
-            </li>
-            <hr class='-mb-4' />
-        </ul>
-        <footer class='bg-background-card rounded-b-md px-6 pb-4 flex flex-row justify-between'>
+        <section v-show="isOpen">
+          <ul class='bg-background-card p-6'>
+              <li class='mb-3'>
+                  <HeaderText>Hellena John</HeaderText>
+              </li>
+              <li class='mb-6'>
+                  <BodyText class='font-bold text-primary-dark'>Software Tester</BodyText>
+              </li>
+              <li class='mb-6'>
+                  <LinkText
+                    href="mailto:georgia.young@example.com">
+                      georgia.young@example.com
+                  </LinkText>
+              </li>
+              <li class='mb-6'>
+                  <BodyText class='font-bold text-primary-dark'>(808) 555-0111</BodyText>
+              </li>
+              <hr class='-mb-4' />
+          </ul>
+        </section>
+        <footer
+          v-show="isOpen"
+          class='bg-background-card rounded-b-md px-6 pb-4 flex flex-row justify-between'>
             <ButtonIcon text="Edit" class='focus:ring-primary'>
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M13.232 3.23199L16.768 6.76799M14.732 1.73199C15.2009
@@ -62,7 +71,7 @@
               </svg>
             </ButtonIcon>
         </footer>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -78,6 +87,11 @@ export default {
     ButtonIcon,
     HeaderText,
     LinkText,
+  },
+  data() {
+    return {
+      isOpen: false,
+    };
   },
   props: {
     title: {
@@ -103,6 +117,12 @@ export default {
     phone: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    toggleCard() {
+      this.isOpen = !this.isOpen;
+      console.log(this.isOpen);
     },
   },
 };
