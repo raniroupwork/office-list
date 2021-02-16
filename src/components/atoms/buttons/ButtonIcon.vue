@@ -1,13 +1,18 @@
 <template>
     <button :disabled='disabled' :text='text' class="btn-icon">
       <slot></slot>
-      <span>{{ text }}</span>
+      <BodyText class='text-xs ml-2'>{{ text }}</BodyText>
     </button>
 </template>
 
 <script>
+import BodyText from '../topography/BodyText.vue'
+
 export default {
   name: 'Button',
+  components: {
+    BodyText,
+  },
   props: {
     text: {
       type: String,

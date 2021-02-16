@@ -1,7 +1,7 @@
 import BodyText from '../../../components/atoms/topography/BodyText.vue';
 
 export default {
-  title: 'atoms/topography/BodyText',
+  title: 'atoms/typography/BodyText',
   component: BodyText,
 };
 
@@ -11,6 +11,6 @@ const Template = (args, { argTypes }) => ({
   template: '<BodyText>Body Text</BodyText>',
 });
 
-export const Title = Template.bind({});
-Title.args = {
+export const Body = Template.bind({});
+Body.args = {
 };

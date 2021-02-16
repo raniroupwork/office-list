@@ -20,7 +20,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
     .add-new-location {
         width: 317px;
         height: 56px;

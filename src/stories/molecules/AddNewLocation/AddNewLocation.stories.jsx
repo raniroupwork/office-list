@@ -1,4 +1,4 @@
-import AddNewLocation from '../../molecules/AddNewLocation.vue';
+import AddNewLocation from '../../../components/molecules/AddNewLocation.vue';
 
 export default {
   title: 'molecules/AddNewLocation',

@@ -4,8 +4,8 @@ export {
 } from './atoms';
 
 // MOLECULES
-// export {
-// } from './molecules';
+export {
+} from './molecules';
 
 // ORGANISMS
 // export {
