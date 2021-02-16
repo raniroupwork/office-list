@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BodyText from '../topography/BodyText.vue'
+import BodyText from '../typography/BodyText.vue'
 
 export default {
   name: 'Button',

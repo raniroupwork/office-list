@@ -1,0 +1,3 @@
+.link-text {
+    @apply text-accent-blue no-underline text-base leading-3 tracking-meta;
+}

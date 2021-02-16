@@ -1,4 +1,4 @@
-import BodyText from '../../../components/atoms/topography/BodyText.vue';
+import BodyText from '../../../components/atoms/typography/BodyText.vue';
 
 export default {
   title: 'atoms/typography/BodyText',

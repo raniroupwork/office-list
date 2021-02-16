@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BodyText from '../atoms/topography/BodyText.vue';
+import BodyText from '../atoms/typography/BodyText.vue';
 
 export default {
   name: 'AddNewLocation',

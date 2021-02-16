@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import DisplayText from '../components/atoms/topography/DisplayText.vue';
+import DisplayText from '../components/atoms/typography/DisplayText.vue';
 
 export default {
   name: 'Header',
