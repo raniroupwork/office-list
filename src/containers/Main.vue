@@ -1,16 +1,16 @@
 <template>
-  <main class='main'>
-      <DisplayText>Main</DisplayText>
+  <main class='main max-w-full relative mb-6'>
+      <AddNewLocation class='relative my-0 mx-auto'/>
   </main>
 </template>
 
 <script>
-import DisplayText from '../components/atoms/topography/DisplayText.vue';
+import AddNewLocation from '../components/molecules/AddNewLocation.vue';
 
 export default {
   name: 'Main',
   components: {
-    DisplayText,
+    AddNewLocation,
   },
 };
 </script>

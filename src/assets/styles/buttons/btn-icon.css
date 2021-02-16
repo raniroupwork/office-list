@@ -1,5 +1,5 @@
 .btn-icon {
-    @apply flex align-middle bg-transparent uppercase outline-none inline-block text-sm px-2 py-2 rounded transition duration-200 ease-in-out;
+    @apply flex align-middle bg-transparent uppercase outline-none px-2 py-2 rounded transition duration-200 ease-in-out;
 }
 
 .btn-icon span {

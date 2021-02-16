@@ -1,7 +1,7 @@
 import DisplayText from '../../../components/atoms/topography/DisplayText.vue';
 
 export default {
-  title: 'atoms/Topography/DisplayText',
+  title: 'atoms/topography/DisplayText',
   component: DisplayText,
 };
 

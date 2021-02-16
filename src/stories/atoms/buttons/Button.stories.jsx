@@ -1,7 +1,7 @@
 import Button from '../../../components/atoms/buttons/Button.vue';
 
 export default {
-  title: 'atoms/Buttons/Button',
+  title: 'atoms/buttons/Button',
   component: Button,
   argTypes: {
   //   type: { control: 'Primary' },

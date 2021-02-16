@@ -9,7 +9,8 @@ module.exports = {
         'primary-dark': '#313E4F',
         'accent-blue': '#33A6BA',
         'accent-red': '#FF7B92',
-        'background-color': '#FFFFFF',
+        'background-card': '#FFFFFF',
+        'background-body': '#E8EDF3',
       },
       fontSize: {
         'display': '4rem',
