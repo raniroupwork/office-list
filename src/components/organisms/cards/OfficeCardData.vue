@@ -1,5 +1,5 @@
 <template>
-    <div class='office-card shadow-xl mb-6'>
+    <div class='office-card-data shadow-xl mb-6'>
         <header :class="isOpen ? 'bg-primary':'bg-background-card rounded-b-md'"
           class=' p-6 rounded-t-md
                 flex flex-row justify-between items-center relative'>
@@ -75,13 +75,13 @@
 </template>
 
 <script>
-import BodyText from '../atoms/typography/BodyText.vue';
-import ButtonIcon from '../atoms/buttons/ButtonIcon.vue';
-import HeaderText from '../atoms/typography/HeaderText.vue';
-import LinkText from '../molecules/LinkText.vue';
+import BodyText from '../../atoms/typography/BodyText.vue';
+import ButtonIcon from '../../atoms/buttons/ButtonIcon.vue';
+import HeaderText from '../../atoms/typography/HeaderText.vue';
+import LinkText from '../../molecules/LinkText.vue';
 
 export default {
-  name: 'OfficeCard',
+  name: 'OfficeCardData',
   components: {
     BodyText,
     ButtonIcon,
@@ -122,14 +122,13 @@ export default {
   methods: {
     toggleCard() {
       this.isOpen = !this.isOpen;
-      console.log(this.isOpen);
     },
   },
 };
 </script>
 
 <style>
-    .office-card {
+    .office-card-data {
         width: 317px;
     }
 </style>

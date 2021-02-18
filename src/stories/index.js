@@ -10,6 +10,7 @@ export {
 // MOLECULES
 export {
   AddNewLocation,
+  GenericInput,
   LinkText,
 } from './molecules';
 

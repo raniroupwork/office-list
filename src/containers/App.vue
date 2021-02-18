@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class='place-items-center relative bg-background-body w-full h-full overflow-hidden'>
+    class='place-items-center relative bg-background-body w-full h-full overflow-y-auto'>
     <Header />
     <router-view/>
     <Footer />
