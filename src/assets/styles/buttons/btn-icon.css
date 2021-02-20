@@ -1,5 +1,5 @@
 .btn-icon {
-    @apply flex flex-row items-center bg-transparent uppercase outline-none px-2 py-2 rounded transition duration-200 ease-in-out;
+    @apply flex flex-row items-center bg-transparent uppercase outline-none px-4 py-2 rounded transition duration-200 ease-in-out;
 }
 
 .btn-icon:focus {

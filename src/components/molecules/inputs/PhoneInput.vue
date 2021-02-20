@@ -1,5 +1,5 @@
 <template>
-  <label class="block">
+  <label class="block py-4">
     <span class="text-gray-700">Input</span>
     <input class="form-input mt-1 block w-full" :type="type" :placeholder="placeholder">
   </label>

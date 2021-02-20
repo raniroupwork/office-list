@@ -1,5 +1,5 @@
 <template>
-    <button :disabled='disabled' :text='text' class="btn-icon max-w-24 w-24">
+    <button :disabled='disabled' :text='text' class="btn-icon max-w-24 w-24" @click="clicked">
       <slot></slot>
       <BodyText
         style="color: inherit"
@@ -25,6 +25,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    clicked() {
+      this.$emit('click');
     },
   },
 };

@@ -1,13 +1,21 @@
 <template>
-  <label :for="placeholder" class="block relative">
+  <label :for="placeholder" class="block relative py-4">
     <BodyText class="text-gray-700 mb-2">{{ label }}{{ required ? ' *' : ''}}</BodyText>
     <input
+      @change="$emit('change', $event.target.value)"
       :id="placeholder"
       class="form-input mt-1 block w-full rounded-md border-primary"
-      :class="error ? 'border-accent-red text-accent-red' : ''"
+      :class="error ? 'border-accent-red text-accent-red pr-8' : ''"
       :type="type"
-      :placeholder="placeholder" />
-    <svg v-show="error" class="absolute right-4 top-8" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      :placeholder="placeholder"
+      v-bind:value="value" />
+    <svg
+      v-show="error"
+      class="absolute right-4 top-12"
+      width="16" height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -47,7 +55,15 @@ export default {
     BodyText,
     MicroText,
   },
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
   props: {
+    value: {
+      type: String,
+      default: '',
+    },
     placeholder: {
       type: String,
       default: '',

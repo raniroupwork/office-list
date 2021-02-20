@@ -1,5 +1,5 @@
 <template>
-    <button :disabled='disabled' :type='type' class="btn" :class="`btn-${type}`">
+    <button :disabled='disabled' :type='type' class="btn" :class="`btn-${type}`" @click="clicked">
       <slot></slot>
     </button>
 </template>
@@ -15,6 +15,11 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    clicked() {
+      this.$emit('click');
     },
   },
 };
