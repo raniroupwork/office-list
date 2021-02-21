@@ -1,5 +1,6 @@
 <template>
   <button
+    @click.prevent="clickedPrevent"
     class='add-new-location text-primary-light flex flex-row items-center justify-between
     py-1 px-6 bg-accent-blue shadow-xl rounded-md cursor-pointer
     transition ease-in-out duration-300 hover:bg-opacity-80
@@ -16,6 +17,11 @@ export default {
   name: 'AddNewLocation',
   components: {
     BodyText,
+  },
+  methods: {
+    clickedPrevent() {
+      this.$emit('clickPrevent');
+    },
   },
 };
 </script>

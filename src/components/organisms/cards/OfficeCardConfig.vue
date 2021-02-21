@@ -79,7 +79,7 @@ import GenericInput from '../../molecules/inputs/GenericInput.vue';
 import PhoneInput from '../../molecules/inputs/PhoneInput.vue';
 
 export default {
-  name: 'OfficeCardEdit',
+  name: 'OfficeCardConfig',
   components: {
     BodyText,
     Button,
@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     closeEdit() {
-      this.$emit('toggleEdit');
+      this.$emit('toggleConfig');
     },
     submitForms() {
       const title = this.title.trim();

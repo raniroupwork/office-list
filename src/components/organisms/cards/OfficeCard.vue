@@ -1,34 +1,34 @@
 <template>
   <div class='office-card max-w-full relative mb-6'>
       <OfficeCardData
-        v-if="!isOpen"
-        @toggleEdit="toggleEdit"
+        v-if="!isEditConfigOpen"
+        @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
-      <OfficeCardEdit
+      <OfficeCardConfig
         v-else
-        @toggleEdit="toggleEdit"
+        @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
   </div>
 </template>
 
 <script>
 import OfficeCardData from './OfficeCardData.vue';
-import OfficeCardEdit from './OfficeCardEdit.vue';
+import OfficeCardConfig from './OfficeCardConfig.vue';
 
 export default {
   name: 'OfficeCard',
   components: {
     OfficeCardData,
-    OfficeCardEdit,
+    OfficeCardConfig,
   },
   data() {
     return {
-      isOpen: false,
+      isEditConfigOpen: false,
     };
   },
   methods: {
-    toggleEdit() {
-      this.isOpen = !this.isOpen;
+    toggleConfig() {
+      this.isEditConfigOpen = !this.isEditConfigOpen;
     },
   },
 };

@@ -50,7 +50,7 @@
           v-show="isOpen"
           class='bg-background-card rounded-b-md px-6 pb-4 flex flex-row justify-between'>
             <ButtonIcon
-              @clickPrevent="() => $emit('toggleEdit')"
+              @clickPrevent="() => $emit('toggleConfig')"
               text="Edit"
               class='focus:ring-primary'>
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +128,7 @@ export default {
     },
     openEdit() {
       console.log('emit');
-      this.$emit('toggleEdit');
+      this.$emit('toggleConfig');
     },
   },
 };
