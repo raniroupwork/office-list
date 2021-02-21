@@ -57,10 +57,12 @@
             :required="true"
             v-model="email"
             :error="emailErr" />
-          <PhoneInput></PhoneInput>
+          <PhoneInput
+            :required="true"
+            v-model="phone" />
         </section>
         <footer>
-          <Button @click="validate">Save</Button>
+          <Button @click="validateForms">Save</Button>
         </footer>
     </div>
 </template>
@@ -95,6 +97,7 @@ export default {
       fullNameErr: false,
       jobPositionErr: false,
       emailErr: false,
+      phoneErr: false,
       emailErrMsg: '',
     };
   },
@@ -102,13 +105,13 @@ export default {
     closeEdit() {
       this.isOpen = !this.isOpen;
     },
-    validate() {
-      alert('vli');
-      console.log(this.title);
-      console.log(this.address);
-      console.log(this.fullName);
-      console.log(this.jobPosition);
-      console.log(this.email);
+    validateForms() {
+      // alert('vli');
+      // console.log(this.title);
+      // console.log(this.address);
+      // console.log(this.fullName);
+      // console.log(this.jobPosition);
+      // console.log(this.email);
     },
   },
 };

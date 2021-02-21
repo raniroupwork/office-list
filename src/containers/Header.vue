@@ -1,5 +1,5 @@
 <template>
-  <header class='header mb-12 pt-24'>
+  <header class='header mb-12 pt-40'>
       <DisplayText>Offices</DisplayText>
   </header>
 </template>
@@ -14,7 +14,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

@@ -2,13 +2,12 @@
   <label :for="placeholder" class="block relative py-4">
     <BodyText class="text-gray-700 mb-2">{{ label }}{{ required ? ' *' : ''}}</BodyText>
     <input
-      @change="$emit('change', $event.target.value)"
-      :id="placeholder"
       class="form-input mt-1 block w-full rounded-md border-primary"
       :class="error ? 'border-accent-red text-accent-red pr-8' : ''"
-      :type="type"
+      :id="placeholder"
       :placeholder="placeholder"
-      v-bind:value="value" />
+      :type="type"
+      @input="$emit('input', $event.target.value)" />
     <svg
       v-show="error"
       class="absolute right-4 top-12"
@@ -39,7 +38,7 @@
     <MicroText
       v-show="error"
       :class="error ? ' text-accent-red' : ''"
-      class="text-xs mt-1 tracking-wide">
+      class="text-xs mt-1 tracking-wide absolute">
         {{ errorMessage }}
     </MicroText>
   </label>
@@ -56,14 +55,10 @@ export default {
     MicroText,
   },
   model: {
-    prop: 'value',
-    event: 'change',
+    event: 'input',
   },
   props: {
-    value: {
-      type: String,
-      default: '',
-    },
+
     placeholder: {
       type: String,
       default: '',
