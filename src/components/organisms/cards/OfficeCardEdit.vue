@@ -58,16 +58,20 @@
             v-model="email"
             :error="emailErr" />
           <PhoneInput
+            @validate="(value) => {this.validNumber = value}"
             :required="true"
+            :error="phoneErr"
+            :errorMessage="phoneErrMsg"
             v-model="phone" />
         </section>
         <footer>
-          <Button @click="validateForms">Save</Button>
+          <Button @click="submitForms">Save</Button>
         </footer>
     </div>
 </template>
 
 <script>
+import validadteEmail from '../../../helpers/validateEmail';
 import BodyText from '../../atoms/typography/BodyText.vue';
 import MetaText from '../../atoms/typography/MetaText.vue';
 import Button from '../../atoms/buttons/Button.vue';
@@ -99,19 +103,40 @@ export default {
       emailErr: false,
       phoneErr: false,
       emailErrMsg: '',
+      phoneErrMsg: 'Invalid phone number format',
+      validNumber: null,
     };
   },
   methods: {
     closeEdit() {
       this.isOpen = !this.isOpen;
     },
-    validateForms() {
-      // alert('vli');
-      // console.log(this.title);
-      // console.log(this.address);
-      // console.log(this.fullName);
-      // console.log(this.jobPosition);
-      // console.log(this.email);
+    submitForms() {
+      this.titleErr = this.title.trim().length === 0;
+      this.adrressErr = this.address.trim().length === 0;
+      this.fullNameErr = this.fullName.trim().length === 0;
+      this.jobPositionErr = this.jobPosition.trim().length === 0;
+
+      if (this.email.trim().length === 0) {
+        this.emailErr = true;
+        this.emailErrMsg = 'This field cannot be empty';
+      } else if (!validadteEmail(this.email.trim())) {
+        this.emailErr = true;
+        this.emailErrMsg = 'Invalid e-mail format';
+      } else {
+        this.emailErr = false;
+      }
+
+      if (this.phone.trim().length === 0) {
+        this.phoneErr = true;
+        this.phoneErrMsg = 'This field cannot be empty';
+      } else if (!this.validNumber) {
+        this.phoneErr = true;
+        this.phoneErrMsg = 'Invalid phone number format';
+      } else {
+        this.phoneErr = false;
+        this.phoneErrMsg = 'Invalid phone number format';
+      }
     },
   },
 };

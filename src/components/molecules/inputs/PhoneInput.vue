@@ -2,17 +2,16 @@
   <div class="phone-input mb-7 mt-2 relative">
         <BodyText class="text-gray-700 mb-2"> Phone {{ required ? ' *' : ''}} </BodyText>
         <vue-tel-input
-            :validCharactersOnly="true"
             styleClasses="mt-1 w-full rounded-md border-primary py-1"
-            :class="error ? 'border-accent-red text-accent-red pr-8' : ''"
+            :class="validationError  || error ? 'border-accent-red text-accent-red pr-8' : ''"
             :inputOptions="{
                 placeholder: '(xxx) xxx-xxxx',
-                required: required,
             }"
+            :validCharactersOnly="true"
             @input="(number, phoneObj) => $emit('input', number)"
             @validate="(e) => isPhoneValid(e.valid)" />
             <svg
-              v-show="error"
+              v-show="validationError  || error"
               class="absolute right-4 top-8"
               width="16" height="16"
               viewBox="0 0 16 16"
@@ -39,8 +38,8 @@
                   3.10536 8.26522 3 8 3Z" fill="#FF7B92"/>
             </svg>
             <MicroText
-              v-show="error"
-              :class="error ? ' text-accent-red' : ''"
+              v-show="validationError || error"
+              :class="validationError  || error ? ' text-accent-red' : ''"
               class="text-xs mt-1 tracking-wide absolute">
                 {{ errorMessage }}
             </MicroText>
@@ -54,7 +53,7 @@ import MicroText from '../../atoms/typography/MicroText.vue';
 export default {
   data() {
     return {
-      error: false,
+      validationError: false,
     };
   },
   name: 'TextInput',
@@ -64,10 +63,11 @@ export default {
   },
   methods: {
     isPhoneValid(valid) {
+      this.$emit('validate', valid);
       if (valid === false) {
-        this.error = true;
+        this.validationError = true;
       } else {
-        this.error = false;
+        this.validationError = false;
       }
     },
   },
@@ -76,9 +76,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    error: {
+      type: Boolean,
+      default: false,
+    },
     errorMessage: {
       type: String,
-      default: 'This field cannot be empty',
+      default: 'Invalid phone number format',
     },
   },
   model: {
