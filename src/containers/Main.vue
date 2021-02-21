@@ -6,35 +6,40 @@
         class='relative my-0 mb-7 mx-auto'/>
       <OfficeCardConfig
         v-else
+        type="New"
         @toggleConfig="toggleConfig"
         class='relative my-0 mb-7 mx-auto'/>
-      <OfficeCardData v-for="office in allOffices" :key="office.id" :data="office" />
+      <OfficeCard v-for="office in allOffices" :key="office.id" :data="office" />
   </main>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import AddNewLocation from '../components/molecules/AddNewLocation.vue';
-import OfficeCardData from '../components/organisms/cards/OfficeCardData.vue';
 import OfficeCardConfig from '../components/organisms/cards/OfficeCardConfig.vue';
+import OfficeCard from '../components/organisms/cards/OfficeCard.vue';
 
 export default {
   name: 'Main',
   components: {
     AddNewLocation,
-    OfficeCardData,
     OfficeCardConfig,
+    OfficeCard,
   },
   data() {
     return {
       isNewConfigOpen: false,
     };
   },
-  computed: mapGetters(['allOffices']),
   methods: {
     toggleConfig() {
       this.isNewConfigOpen = !this.isNewConfigOpen;
     },
+    ...mapActions(['fetchOffices']),
+  },
+  computed: mapGetters(['allOffices']),
+  created() {
+    this.fetchOffices();
   },
 };
 </script>

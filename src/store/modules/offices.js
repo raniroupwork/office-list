@@ -1,33 +1,39 @@
 /* eslint no-shadow: ["error", { "allow": ["state"] }]  */
-// import axios from 'axios';
+import axios from 'axios';
+
+const URL = 'https://api.jsonbin.io/b/603298067c58305d39582621/1';
+const config = {
+  headers: {
+    'secret-key': '$2b$10$kWIIFcgKUZX/DGMz/HF2HOQRDvDLhrljf/W6AHvnXhf1ETyybNaCe',
+  },
+};
 
 const state = {
-  offices: [
-    {
-      id: 0,
-      title: 'Headquarters 0',
-      address: '3763 W. Dallas St.',
-      fullName: 'Hellena John',
-      jobPosition: 'Software Tester',
-      email: 'georgia.young@example.com',
-      phone: '(808) 555-0111',
-    },
-    {
-      id: 1,
-      title: 'Headquarters 1',
-      address: '3764 W. Dallas St.',
-      fullName: 'Alice John',
-      jobPosition: 'Software Tester',
-      email: 'alice.young@example.com',
-      phone: '(808) 555-0222',
-    },
-  ],
+  offices: [],
 };
+
 const getters = {
   allOffices: (state) => state.offices,
 };
-const actions = {};
-const mutations = {};
+
+const actions = {
+  async fetchOffices({ commit }) {
+    const response = await axios.get(URL, config);
+    commit('setOffices', response.data);
+  },
+  async addOffice({ commit }, data) {
+    const response = await axios.post('https://jsonplaceholder.typicode.com/todos', data);
+    commit('newOffice', response.data);
+  },
+};
+const mutations = {
+  setOffices: (state, offices) => {
+    state.offices = offices;
+  },
+  newOffice: (satate, office) => {
+    state.offices.unshift(office);
+  },
+};
 
 export default {
   state,

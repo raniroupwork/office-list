@@ -1,11 +1,13 @@
 <template>
   <div class='office-card max-w-full relative mb-6'>
       <OfficeCardData
+        :data="data"
         v-if="!isEditConfigOpen"
         @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
       <OfficeCardConfig
         v-else
+        type="Edit"
         @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
   </div>
@@ -20,6 +22,41 @@ export default {
   components: {
     OfficeCardData,
     OfficeCardConfig,
+  },
+  props: {
+    data: {
+      type: Object,
+      default: () => ({
+        id: {
+          type: Number,
+          default: null,
+        },
+        title: {
+          type: String,
+          default: '',
+        },
+        address: {
+          type: String,
+          default: '',
+        },
+        fullName: {
+          type: String,
+          default: '',
+        },
+        jobPosition: {
+          type: String,
+          default: '',
+        },
+        email: {
+          type: String,
+          default: '',
+        },
+        phone: {
+          type: String,
+          default: '',
+        },
+      }),
+    },
   },
   data() {
     return {

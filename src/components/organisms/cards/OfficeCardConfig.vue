@@ -1,11 +1,11 @@
 <template>
-    <div class='office-card-edit shadow-xl mb-6 p-6 rounded-t-md bg-background-card'>
+    <div class='office-card-config shadow-xl mb-6 p-6 rounded-t-md bg-background-card'>
         <header class='flex flex-row justify-between items-center relative mb-10'>
           <BodyText class='text-primary-dark font-bold'>
-            Edit Location
+            {{ type }} Location
           </BodyText>
           <svg
-            @click="closeEdit()"
+            @click="closeConfig()"
             class='cursor-pointer'
             width="14" height="14"
             viewBox="0 0 14 14" fill="none"
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import validadteEmail from '../../../helpers/validateEmail';
 import BodyText from '../../atoms/typography/BodyText.vue';
 import MetaText from '../../atoms/typography/MetaText.vue';
@@ -108,10 +109,17 @@ export default {
       validNumber: null,
     };
   },
+  props: {
+    type: {
+      type: String,
+      default: 'Edit',
+    },
+  },
   methods: {
-    closeEdit() {
+    closeConfig() {
       this.$emit('toggleConfig');
     },
+    ...mapActions(['addOffice']),
     submitForms() {
       const title = this.title.trim();
       const address = this.address.trim();
@@ -152,11 +160,21 @@ export default {
           || this.jobPositionErr
           || this.emailErr
           || this.phoneErr)) {
-        alert('valid');
-        this.isOpen = false;
         this.saveIsDisabled = false;
+        if (this.$props.type === 'New') {
+          this.closeConfig();
+        }
+        this.addOffice(
+          {
+            title,
+            address,
+            fullName,
+            jobPosition,
+            email,
+            phone,
+          },
+        );
       } else {
-        alert('invalid');
         this.saveIsDisabled = true;
       }
     },
@@ -188,7 +206,7 @@ export default {
 </script>
 
 <style>
-    .office-card-edit {
+    .office-card-config {
         width: 317px;
     }
 </style>

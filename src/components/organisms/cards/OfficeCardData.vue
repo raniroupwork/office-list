@@ -105,36 +105,6 @@ export default {
   props: {
     data: {
       type: Object,
-      default: () => ({
-        id: {
-          type: Number,
-          default: null,
-        },
-        title: {
-          type: String,
-          default: '',
-        },
-        address: {
-          type: String,
-          default: '',
-        },
-        fullName: {
-          type: String,
-          default: '',
-        },
-        jobPosition: {
-          type: String,
-          default: '',
-        },
-        email: {
-          type: String,
-          default: '',
-        },
-        phone: {
-          type: String,
-          default: '',
-        },
-      }),
     },
   },
   methods: {
