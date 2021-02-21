@@ -1,14 +1,14 @@
 <template>
-    <div class='office-card-data shadow-xl mb-6'>
+    <div class='office-card-data shadow-xl mb-6 my-0 mx-auto'>
         <header :class="isOpen ? 'bg-primary':'bg-background-card rounded-b-md'"
           class=' p-6 rounded-t-md
                 flex flex-row justify-between items-center relative'>
             <div class='office-card__header-text'>
                 <HeaderText :class="isOpen ? 'text-primary-light':'text-primary-dark'" class='mb-2'>
-                  Headquarters
+                  {{ data.title }}
                 </HeaderText>
                 <BodyText :class="isOpen ? 'text-primary-light':'text-primary'">
-                  3763 W. Dallas St.
+                  {{ data.address }}
                 </BodyText>
             </div>
             <svg v-if="isOpen" @click="toggleCard()" class='cursor-pointer' width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,19 +29,25 @@
         <section v-show="isOpen">
           <ul class='bg-background-card p-6'>
               <li class='mb-3'>
-                  <HeaderText>Hellena John</HeaderText>
+                  <HeaderText>
+                  {{ data.fullName }}
+                  </HeaderText>
               </li>
               <li class='mb-6'>
-                  <BodyText class='font-bold text-primary-dark'>Software Tester</BodyText>
+                  <BodyText class='font-bold text-primary-dark'>
+                  {{ data.jobPosition }}
+                  </BodyText>
               </li>
               <li class='mb-6'>
                   <LinkText
                     href="mailto:georgia.young@example.com">
-                      georgia.young@example.com
+                    {{ data.email }}
                   </LinkText>
               </li>
               <li class='mb-6'>
-                  <BodyText class='font-bold text-primary-dark'>(808) 555-0111</BodyText>
+                  <BodyText class='font-bold text-primary-dark'>
+                    {{ data.phone }}
+                  </BodyText>
               </li>
               <hr class='-mb-4' />
           </ul>
@@ -97,37 +103,45 @@ export default {
     };
   },
   props: {
-    // title: {
-    //   type: String,
-    //   default: '',
-    // },
-    // address: {
-    //   type: String,
-    //   default: '',
-    // },
-    // fullName: {
-    //   type: String,
-    //   default: '',
-    // },
-    // jobPosition: {
-    //   type: String,
-    //   default: '',
-    // },
-    // email: {
-    //   type: String,
-    //   default: '',
-    // },
-    // phone: {
-    //   type: String,
-    //   default: '',
-    // },
+    data: {
+      type: Object,
+      default: () => ({
+        id: {
+          type: Number,
+          default: null,
+        },
+        title: {
+          type: String,
+          default: '',
+        },
+        address: {
+          type: String,
+          default: '',
+        },
+        fullName: {
+          type: String,
+          default: '',
+        },
+        jobPosition: {
+          type: String,
+          default: '',
+        },
+        email: {
+          type: String,
+          default: '',
+        },
+        phone: {
+          type: String,
+          default: '',
+        },
+      }),
+    },
   },
   methods: {
     toggleCard() {
       this.isOpen = !this.isOpen;
     },
     openEdit() {
-      console.log('emit');
       this.$emit('toggleConfig');
     },
   },
