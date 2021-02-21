@@ -65,7 +65,7 @@
             v-model="phone" />
         </section>
         <footer>
-          <Button @click="submitForms">Save</Button>
+          <Button @clickPrevent="submitForms" :disabled="saveIsDisabled">Save</Button>
         </footer>
     </div>
 </template>
@@ -90,6 +90,7 @@ export default {
   data() {
     return {
       isOpen: true,
+      saveIsDisabled: false,
       title: '',
       address: '',
       fullName: '',
@@ -109,25 +110,32 @@ export default {
   },
   methods: {
     closeEdit() {
-      this.isOpen = !this.isOpen;
+      this.$emit('toggleEdit');
     },
     submitForms() {
-      this.titleErr = this.title.trim().length === 0;
-      this.adrressErr = this.address.trim().length === 0;
-      this.fullNameErr = this.fullName.trim().length === 0;
-      this.jobPositionErr = this.jobPosition.trim().length === 0;
+      const title = this.title.trim();
+      const address = this.address.trim();
+      const fullName = this.fullName.trim();
+      const jobPosition = this.jobPosition.trim();
+      const email = this.email.trim();
+      const phone = this.phone.trim();
 
-      if (this.email.trim().length === 0) {
+      this.titleErr = title.length === 0;
+      this.adrressErr = address.length === 0;
+      this.fullNameErr = fullName.length === 0;
+      this.jobPositionErr = jobPosition.length === 0;
+
+      if (email.length === 0) {
         this.emailErr = true;
         this.emailErrMsg = 'This field cannot be empty';
-      } else if (!validadteEmail(this.email.trim())) {
+      } else if (!validadteEmail(email)) {
         this.emailErr = true;
         this.emailErrMsg = 'Invalid e-mail format';
       } else {
         this.emailErr = false;
       }
 
-      if (this.phone.trim().length === 0) {
+      if (phone.length === 0) {
         this.phoneErr = true;
         this.phoneErrMsg = 'This field cannot be empty';
       } else if (!this.validNumber) {
@@ -137,6 +145,43 @@ export default {
         this.phoneErr = false;
         this.phoneErrMsg = 'Invalid phone number format';
       }
+
+      if (!(this.titleErr
+          || this.adrressErr
+          || this.fullNameErr
+          || this.jobPositionErr
+          || this.emailErr
+          || this.phoneErr)) {
+        alert('valid');
+        this.isOpen = false;
+        this.saveIsDisabled = false;
+      } else {
+        alert('invalid');
+        this.saveIsDisabled = true;
+      }
+    },
+  },
+  computed: {
+    changeData() {
+      const {
+        title, address, fullName, jobPosition, email, phone,
+      } = this;
+      return {
+        title,
+        address,
+        fullName,
+        jobPosition,
+        email,
+        phone,
+      };
+    },
+  },
+  watch: {
+    changeData: {
+      handler() {
+        this.saveIsDisabled = false;
+      },
+      deep: true,
     },
   },
 };

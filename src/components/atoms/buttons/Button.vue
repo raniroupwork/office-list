@@ -1,5 +1,10 @@
 <template>
-    <button :disabled='disabled' :type='type' class="btn" :class="`btn-${type}`" @click="clicked">
+    <button
+      :disabled='disabled'
+      :type='type'
+      class="btn"
+      :class="`btn-${type}`"
+      @click.prevent="clickedPrevent" >
       <slot></slot>
     </button>
 </template>
@@ -18,8 +23,8 @@ export default {
     },
   },
   methods: {
-    clicked() {
-      this.$emit('click');
+    clickedPrevent() {
+      this.$emit('clickPrevent');
     },
   },
 };

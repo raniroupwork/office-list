@@ -1,7 +1,13 @@
 <template>
   <div class='office-card max-w-full relative mb-6'>
-      <OfficeCardData class='relative my-0 mx-auto'></OfficeCardData>
-      <OfficeCardEdit class='relative my-0 mx-auto'></OfficeCardEdit>
+      <OfficeCardData
+        v-if="!isOpen"
+        @toggleEdit="toggleEdit"
+        class='relative my-0 mx-auto' />
+      <OfficeCardEdit
+        v-else
+        @toggleEdit="toggleEdit"
+        class='relative my-0 mx-auto' />
   </div>
 </template>
 
@@ -14,6 +20,16 @@ export default {
   components: {
     OfficeCardData,
     OfficeCardEdit,
+  },
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  methods: {
+    toggleEdit() {
+      this.isOpen = !this.isOpen;
+    },
   },
 };
 </script>

@@ -49,7 +49,10 @@
         <footer
           v-show="isOpen"
           class='bg-background-card rounded-b-md px-6 pb-4 flex flex-row justify-between'>
-            <ButtonIcon text="Edit" class='focus:ring-primary'>
+            <ButtonIcon
+              @clickPrevent="() => $emit('toggleEdit')"
+              text="Edit"
+              class='focus:ring-primary'>
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M13.232 3.23199L16.768 6.76799M14.732 1.73199C15.2009
                  1.26309 15.8369 0.999664 16.5 0.999664C17.1631 0.999664 17.7991
@@ -94,34 +97,38 @@ export default {
     };
   },
   props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    address: {
-      type: String,
-      default: '',
-    },
-    fullName: {
-      type: String,
-      default: '',
-    },
-    jobPosition: {
-      type: String,
-      default: '',
-    },
-    email: {
-      type: String,
-      default: '',
-    },
-    phone: {
-      type: String,
-      default: '',
-    },
+    // title: {
+    //   type: String,
+    //   default: '',
+    // },
+    // address: {
+    //   type: String,
+    //   default: '',
+    // },
+    // fullName: {
+    //   type: String,
+    //   default: '',
+    // },
+    // jobPosition: {
+    //   type: String,
+    //   default: '',
+    // },
+    // email: {
+    //   type: String,
+    //   default: '',
+    // },
+    // phone: {
+    //   type: String,
+    //   default: '',
+    // },
   },
   methods: {
     toggleCard() {
       this.isOpen = !this.isOpen;
+    },
+    openEdit() {
+      console.log('emit');
+      this.$emit('toggleEdit');
     },
   },
 };

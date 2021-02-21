@@ -3,7 +3,7 @@
         <BodyText class="text-gray-700 mb-2"> Phone {{ required ? ' *' : ''}} </BodyText>
         <vue-tel-input
             styleClasses="mt-1 w-full rounded-md border-primary py-1"
-            :class="validationError  || error ? 'border-accent-red text-accent-red pr-8' : ''"
+            :class="error ? 'border-accent-red text-accent-red pr-8' : ''"
             :inputOptions="{
                 placeholder: '(xxx) xxx-xxxx',
             }"
@@ -11,7 +11,7 @@
             @input="(number, phoneObj) => $emit('input', number)"
             @validate="(e) => isPhoneValid(e.valid)" />
             <svg
-              v-show="validationError  || error"
+              v-show="error"
               class="absolute right-4 top-8"
               width="16" height="16"
               viewBox="0 0 16 16"
@@ -38,8 +38,8 @@
                   3.10536 8.26522 3 8 3Z" fill="#FF7B92"/>
             </svg>
             <MicroText
-              v-show="validationError || error"
-              :class="validationError  || error ? ' text-accent-red' : ''"
+              v-show="error"
+              :class="error ? ' text-accent-red' : ''"
               class="text-xs mt-1 tracking-wide absolute">
                 {{ errorMessage }}
             </MicroText>
@@ -51,11 +51,6 @@ import BodyText from '../../atoms/typography/BodyText.vue';
 import MicroText from '../../atoms/typography/MicroText.vue';
 
 export default {
-  data() {
-    return {
-      validationError: false,
-    };
-  },
   name: 'TextInput',
   components: {
     BodyText,
@@ -64,11 +59,6 @@ export default {
   methods: {
     isPhoneValid(valid) {
       this.$emit('validate', valid);
-      if (valid === false) {
-        this.validationError = true;
-      } else {
-        this.validationError = false;
-      }
     },
   },
   props: {
