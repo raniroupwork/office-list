@@ -25,13 +25,20 @@ const actions = {
     const response = await axios.post('https://jsonplaceholder.typicode.com/todos', data);
     commit('newOffice', response.data);
   },
+  async deleteOffice({ commit }, fullName) {
+    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${fullName}`);
+    commit('removeOffice', fullName);
+  },
 };
 const mutations = {
   setOffices: (state, offices) => {
     state.offices = offices;
   },
-  newOffice: (satate, office) => {
+  newOffice: (state, office) => {
     state.offices.unshift(office);
+  },
+  removeOffice: (state, fullName) => {
+    state.offices = state.offices.filter((office) => office.fullName !== fullName);
   },
 };
 

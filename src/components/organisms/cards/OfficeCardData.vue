@@ -68,7 +68,10 @@
                  stroke="#989EA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </ButtonIcon>
-            <ButtonIcon text="Delete" class='text-accent-red focus:ring-accent-red'>
+            <ButtonIcon
+              @clickPrevent="deleteOffice(data.fullName)"
+              text="Delete"
+              class='text-accent-red focus:ring-accent-red'>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 11V17M14 11V17M4 7H20M19 7L18.133 19.142C18.0971 19.6466 17.8713
                 20.1188 17.5011 20.4636C17.1309 20.8083 16.6439 21 16.138 21H7.862C7.35614 21
@@ -84,6 +87,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import BodyText from '../../atoms/typography/BodyText.vue';
 import ButtonIcon from '../../atoms/buttons/ButtonIcon.vue';
 import HeaderText from '../../atoms/typography/HeaderText.vue';
@@ -114,6 +118,7 @@ export default {
     openEdit() {
       this.$emit('toggleConfig');
     },
+    ...mapActions(['deleteOffice']),
   },
 };
 </script>
