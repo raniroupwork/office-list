@@ -1,4 +1,4 @@
-import DisplayText from '../../../components/atoms/typography/DisplayText.vue';
+import DisplayText from '../../../../components/atoms/typography/DisplayText.vue';
 
 export default {
   title: 'atoms/typography/DisplayText',

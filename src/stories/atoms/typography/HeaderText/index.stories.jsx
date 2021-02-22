@@ -1,4 +1,4 @@
-import HeaderText from '../../../components/atoms/typography/HeaderText.vue';
+import HeaderText from '../../../../components/atoms/typography/HeaderText.vue';
 
 export default {
   title: 'atoms/typography/HeaderText',

@@ -11,7 +11,7 @@
           stroke-linecap="round"
           stroke-linejoin="round" />
       </svg>
-      <MetaText class='uppercase font-bold ml-5'>
+      <MetaText class='uppercase text-sm ml-5'>
         The locaton has been {{type === "Edit" ? 'updated' : 'added'}}.
       </MetaText>
     </div>

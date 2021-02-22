@@ -1,4 +1,4 @@
-import ButtonIcon from '../../../components/atoms/buttons/ButtonIcon.vue';
+import ButtonIcon from '../../../../components/atoms/buttons/ButtonIcon.vue';
 
 export default {
   title: 'atoms/buttons/ButtonIcon',

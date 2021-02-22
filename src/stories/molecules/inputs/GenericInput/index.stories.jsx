@@ -1,4 +1,4 @@
-import GenericInput from '../../../components/molecules/inputs/GenericInput.vue';
+import GenericInput from '../../../../components/molecules/inputs/GenericInput.vue';
 
 export default {
   title: 'molecules/inputs/GenericInput',
