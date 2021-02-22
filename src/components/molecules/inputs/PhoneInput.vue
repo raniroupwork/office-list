@@ -8,6 +8,7 @@
                 placeholder: '(xxx) xxx-xxxx',
             }"
             :validCharactersOnly="true"
+            :value="value"
             @input="(number, phoneObj) => $emit('input', number)"
             @validate="(e) => isPhoneValid(e.valid)" />
             <svg
@@ -73,6 +74,10 @@ export default {
     errorMessage: {
       type: String,
       default: 'Invalid phone number format',
+    },
+    value: {
+      type: undefined,
+      default: '',
     },
   },
   model: {

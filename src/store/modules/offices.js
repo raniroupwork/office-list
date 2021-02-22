@@ -1,12 +1,7 @@
 /* eslint no-shadow: ["error", { "allow": ["state"] }]  */
 import axios from 'axios';
-
-const URL = 'https://api.jsonbin.io/b/603298067c58305d39582621/1';
-const config = {
-  headers: {
-    'secret-key': '$2b$10$kWIIFcgKUZX/DGMz/HF2HOQRDvDLhrljf/W6AHvnXhf1ETyybNaCe',
-  },
-};
+// eslint-disable-next-line import/no-unresolved
+import parameters from '../../services/parameters';
 
 const state = {
   offices: [],
@@ -18,18 +13,24 @@ const getters = {
 
 const actions = {
   async fetchOffices({ commit }) {
-    const response = await axios.get(URL, config);
+    const response = await axios.get(parameters.DB_URL, parameters.config);
     commit('setOffices', response.data);
   },
   async addOffice({ commit }, data) {
-    const response = await axios.post('https://jsonplaceholder.typicode.com/todos', data);
+    const response = await axios.post(parameters.TEST_URL, data);
     commit('newOffice', response.data);
   },
-  async deleteOffice({ commit }, fullName) {
-    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${fullName}`);
-    commit('removeOffice', fullName);
+  async deleteOffice({ commit }, id) {
+    await axios.delete(`${parameters.TEST_URL}/${id}`);
+    commit('removeOffice', id);
+  },
+  async updateOffice({ commit }, updOffice) {
+    console.log(updOffice);
+    await axios.put(`${parameters.TEST_URL}/${updOffice.id}`);
+    commit('updateOffice', updOffice);
   },
 };
+
 const mutations = {
   setOffices: (state, offices) => {
     state.offices = offices;
@@ -37,8 +38,14 @@ const mutations = {
   newOffice: (state, office) => {
     state.offices.unshift(office);
   },
-  removeOffice: (state, fullName) => {
-    state.offices = state.offices.filter((office) => office.fullName !== fullName);
+  removeOffice: (state, id) => {
+    state.offices = state.offices.filter((office) => office.id !== id);
+  },
+  updateOffice: (state, updOffice) => {
+    const index = state.offices.findIndex((office) => office.id === updOffice.id);
+    if (index !== -1) {
+      state.offices.splice(index, 1, updOffice);
+    }
   },
 };
 

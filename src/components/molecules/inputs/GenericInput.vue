@@ -4,9 +4,9 @@
     <input
       class="form-input mt-1 block w-full rounded-md border-primary"
       :class="error ? 'border-accent-red text-accent-red pr-8' : ''"
-      :id="placeholder"
       :placeholder="placeholder"
       :type="type"
+      :value="value"
       @input="$emit('input', $event.target.value)" />
     <svg
       v-show="error"
@@ -58,7 +58,6 @@ export default {
     event: 'input',
   },
   props: {
-
     placeholder: {
       type: String,
       default: '',
@@ -80,6 +79,10 @@ export default {
       default: 'This field cannot be empty',
     },
     label: {
+      type: String,
+      default: '',
+    },
+    value: {
       type: String,
       default: '',
     },

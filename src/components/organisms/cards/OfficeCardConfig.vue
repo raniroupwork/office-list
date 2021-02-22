@@ -25,6 +25,7 @@
             errorMessage="This field cannot be empty"
             :required="true"
             v-model="title"
+            :value="title"
             :error="titleErr" />
           <GenericInput
             label="Enter the address"
@@ -32,6 +33,7 @@
             errorMessage="This field cannot be empty"
             :required="true"
             v-model="address"
+            :value="address"
             :error="adrressErr" />
           <MetaText class="uppercase mt-5 mb-3 text-accent-blue">Contact information</MetaText>
           <hr class="mb-4"/>
@@ -41,6 +43,7 @@
             errorMessage="This field cannot be empty"
             :required="true"
             v-model="fullName"
+            :value="fullName"
             :error="fullNameErr" />
           <GenericInput
             label="Job Position"
@@ -48,6 +51,7 @@
             errorMessage="This field cannot be empty"
             :required="true"
             v-model="jobPosition"
+            :value="jobPosition"
             :error="jobPositionErr" />
           <GenericInput
             label="Email address"
@@ -56,12 +60,14 @@
             :errorMessage="emailErrMsg"
             :required="true"
             v-model="email"
+            :value="email"
             :error="emailErr" />
           <PhoneInput
             @validate="(value) => {this.validNumber = value}"
             :required="true"
             :error="phoneErr"
             :errorMessage="phoneErrMsg"
+            :value="phone"
             v-model="phone" />
         </section>
         <footer>
@@ -92,6 +98,7 @@ export default {
     return {
       isOpen: true,
       saveIsDisabled: false,
+      id: null,
       title: '',
       address: '',
       fullName: '',
@@ -114,13 +121,28 @@ export default {
       type: String,
       default: 'Edit',
     },
+    data: {
+      type: Object,
+    },
+  },
+  mounted() {
+    if (this.$props.type === 'Edit') {
+      this.id = this.$props.data.id;
+      this.title = this.$props.data.title;
+      this.address = this.$props.data.address;
+      this.fullName = this.$props.data.fullName;
+      this.jobPosition = this.$props.data.jobPosition;
+      this.email = this.$props.data.email;
+      this.phone = this.$props.data.phone;
+    }
   },
   methods: {
     closeConfig() {
       this.$emit('toggleConfig');
     },
-    ...mapActions(['addOffice']),
+    ...mapActions(['addOffice', 'updateOffice']),
     submitForms() {
+      const { id } = this;
       const title = this.title.trim();
       const address = this.address.trim();
       const fullName = this.fullName.trim();
@@ -163,17 +185,30 @@ export default {
         this.saveIsDisabled = false;
         if (this.$props.type === 'New') {
           this.closeConfig();
+          this.addOffice(
+            {
+              title,
+              address,
+              fullName,
+              jobPosition,
+              email,
+              phone,
+            },
+          );
+        } else {
+          this.saveIsDisabled = true;
+          this.updateOffice(
+            {
+              id,
+              title,
+              address,
+              fullName,
+              jobPosition,
+              email,
+              phone,
+            },
+          );
         }
-        this.addOffice(
-          {
-            title,
-            address,
-            fullName,
-            jobPosition,
-            email,
-            phone,
-          },
-        );
       } else {
         this.saveIsDisabled = true;
       }

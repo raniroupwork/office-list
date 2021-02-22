@@ -1,12 +1,13 @@
 <template>
   <div class='office-card max-w-full relative mb-6'>
       <OfficeCardData
-        :data="data"
         v-if="!isEditConfigOpen"
+        :data="data"
         @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
       <OfficeCardConfig
         v-else
+        :data="data"
         type="Edit"
         @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />

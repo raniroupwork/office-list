@@ -9,7 +9,7 @@
         type="New"
         @toggleConfig="toggleConfig"
         class='relative my-0 mb-7 mx-auto'/>
-      <OfficeCard v-for="office in allOffices" :key="office.id" :data="office" />
+      <OfficeCard v-for="office in allOffices" :key="office.fullName" :data="office" />
   </main>
 </template>
 
