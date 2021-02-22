@@ -73,15 +73,17 @@
         <footer>
           <Button @clickPrevent="submitForms" :disabled="saveIsDisabled">Save</Button>
         </footer>
+        <Toast v-if="officeEditStatus" :type="type" />
     </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import validadteEmail from '../../../helpers/validateEmail';
 import BodyText from '../../atoms/typography/BodyText.vue';
 import MetaText from '../../atoms/typography/MetaText.vue';
 import Button from '../../atoms/buttons/Button.vue';
+import Toast from '../../molecules/Toast.vue';
 import GenericInput from '../../molecules/inputs/GenericInput.vue';
 import PhoneInput from '../../molecules/inputs/PhoneInput.vue';
 
@@ -93,6 +95,7 @@ export default {
     MetaText,
     GenericInput,
     PhoneInput,
+    Toast,
   },
   data() {
     return {
@@ -184,7 +187,7 @@ export default {
           || this.phoneErr)) {
         this.saveIsDisabled = false;
         if (this.$props.type === 'New') {
-          this.closeConfig();
+          this.saveIsDisabled = true;
           this.addOffice(
             {
               title,
@@ -215,6 +218,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['officeEditStatus']),
     changeData() {
       const {
         title, address, fullName, jobPosition, email, phone,

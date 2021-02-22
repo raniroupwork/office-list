@@ -24,7 +24,7 @@ const actions = {
   async addOffice({ commit }, data) {
     const response = await axios.post(parameters.TEST_URL, data);
     commit('newOffice', response.data);
-    commit('officeAdded');
+    commit('officeAdded', true);
   },
   async deleteOffice({ commit }, id) {
     await axios.delete(`${parameters.TEST_URL}/${id}`);
@@ -33,6 +33,7 @@ const actions = {
   async updateOffice({ commit }, updOffice) {
     await axios.put(`${parameters.TEST_URL}/${updOffice.id}`);
     commit('updateOffice', updOffice);
+    commit('officeAdded', true);
   },
 };
 
@@ -46,8 +47,11 @@ const mutations = {
   newOffice: (state, office) => {
     state.offices.unshift(office);
   },
-  officeAdded: (state) => {
-    state.officesSuccess = true;
+  officeAdded: (state, status) => {
+    state.officesSuccess = status;
+    setTimeout(() => {
+      state.officesSuccess = !status;
+    }, 1500);
   },
   removeOffice: (state, id) => {
     state.offices = state.offices.filter((office) => office.id !== id);
