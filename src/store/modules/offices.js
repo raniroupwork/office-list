@@ -5,27 +5,32 @@ import parameters from '../../services/parameters';
 
 const state = {
   offices: [],
+  officesLoading: true,
+  officesSuccess: false,
 };
 
 const getters = {
   allOffices: (state) => state.offices,
+  isOfficesLoading: (state) => state.officesLoading,
+  officeEditStatus: (state) => state.officesSuccess,
 };
 
 const actions = {
   async fetchOffices({ commit }) {
     const response = await axios.get(parameters.DB_URL, parameters.config);
     commit('setOffices', response.data);
+    commit('officesLoaded');
   },
   async addOffice({ commit }, data) {
     const response = await axios.post(parameters.TEST_URL, data);
     commit('newOffice', response.data);
+    commit('officeAdded');
   },
   async deleteOffice({ commit }, id) {
     await axios.delete(`${parameters.TEST_URL}/${id}`);
     commit('removeOffice', id);
   },
   async updateOffice({ commit }, updOffice) {
-    console.log(updOffice);
     await axios.put(`${parameters.TEST_URL}/${updOffice.id}`);
     commit('updateOffice', updOffice);
   },
@@ -35,8 +40,14 @@ const mutations = {
   setOffices: (state, offices) => {
     state.offices = offices;
   },
+  officesLoaded: (state) => {
+    state.officesLoading = false;
+  },
   newOffice: (state, office) => {
     state.offices.unshift(office);
+  },
+  officeAdded: (state) => {
+    state.officesSuccess = true;
   },
   removeOffice: (state, id) => {
     state.offices = state.offices.filter((office) => office.id !== id);

@@ -9,12 +9,11 @@
         type="New"
         @toggleConfig="toggleConfig"
         class='relative my-0 mb-7 mx-auto'/>
-      <OfficeCard v-for="office in allOffices" :key="office.fullName" :data="office" />
+      <OfficeCard v-for="office in offices" :key="office.fullName" :data="office" />
   </main>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
 import AddNewLocation from '../components/molecules/AddNewLocation.vue';
 import OfficeCardConfig from '../components/organisms/cards/OfficeCardConfig.vue';
 import OfficeCard from '../components/organisms/cards/OfficeCard.vue';
@@ -26,6 +25,11 @@ export default {
     OfficeCardConfig,
     OfficeCard,
   },
+  props: {
+    offices: {
+      type: Array,
+    },
+  },
   data() {
     return {
       isNewConfigOpen: false,
@@ -35,11 +39,6 @@ export default {
     toggleConfig() {
       this.isNewConfigOpen = !this.isNewConfigOpen;
     },
-    ...mapActions(['fetchOffices']),
-  },
-  computed: mapGetters(['allOffices']),
-  created() {
-    this.fetchOffices();
   },
 };
 </script>

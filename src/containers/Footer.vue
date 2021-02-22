@@ -15,7 +15,7 @@ import BodyText from '../components/atoms/typography/BodyText.vue';
 import LinkText from '../components/molecules/LinkText.vue';
 
 export default {
-  name: 'Header',
+  name: 'Footer',
   components: {
     BodyText,
     LinkText,
