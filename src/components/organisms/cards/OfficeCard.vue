@@ -1,17 +1,21 @@
 <template>
-  <div class='office-card max-w-full relative mb-6'>
-      <OfficeCardData
-        v-if="!isEditConfigOpen"
-        :data="data"
-        @toggleConfig="toggleConfig"
-        class='relative my-0 mx-auto' />
+  <transition name="fade">
+    <div class='office-card max-w-full relative mb-6'>
+      <transition name="fade">
+        <OfficeCardData
+          v-show="!isEditConfigOpen"
+          :data="data"
+          @toggleConfig="toggleConfig"
+          class='relative my-0 mx-auto' />
+      </transition>
       <OfficeCardConfig
-        v-else
+        v-show="isEditConfigOpen"
         :data="data"
         type="Edit"
         @toggleConfig="toggleConfig"
         class='relative my-0 mx-auto' />
-  </div>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -73,5 +77,10 @@ export default {
 </script>
 
 <style>
-
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 </style>

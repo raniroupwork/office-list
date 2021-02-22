@@ -3,7 +3,9 @@
     id="app"
     class='place-items-center relative bg-background-body w-full h-full overflow-y-auto'>
     <Header />
-    <router-view v-if="!(isOfficesLoading)" :offices="allOffices" />
+    <transition name="fade">
+      <router-view v-if="!(isOfficesLoading)" :offices="allOffices" />
+    </transition>
     <Footer
     :class="isOfficesLoading ?
     'absolute bottom-0 r-0 l-0 align-middle mx-auto w-full' : ''"/>
@@ -47,3 +49,12 @@ export default {
   },
 };
 </script>
+
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>

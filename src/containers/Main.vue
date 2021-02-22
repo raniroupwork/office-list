@@ -1,15 +1,17 @@
 <template>
   <main class='main max-w-full relative mb-6'>
-      <AddNewLocation
-        v-if="!isNewConfigOpen"
-        @clickPrevent="toggleConfig"
-        class='relative my-0 mb-7 mx-auto'/>
-      <OfficeCardConfig
-        v-else
-        type="New"
-        @toggleConfig="toggleConfig"
-        class='relative my-0 mb-7 mx-auto'/>
-      <OfficeCard v-for="office in offices" :key="office.fullName" :data="office" />
+    <transition name="fade">
+        <AddNewLocation
+          v-if="!isNewConfigOpen"
+          @clickPrevent="toggleConfig"
+          class='relative my-0 mb-7 mx-auto'/>
+        <OfficeCardConfig
+          v-else
+          type="New"
+          @toggleConfig="toggleConfig"
+          class='relative my-0 mb-7 mx-auto'/>
+      </transition>
+        <OfficeCard v-for="office in offices" :key="office.fullName" :data="office" />
   </main>
 </template>
 
@@ -44,5 +46,10 @@ export default {
 </script>
 
 <style>
-
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 </style>

@@ -73,11 +73,14 @@
         <footer>
           <Button @clickPrevent="submitForms" :disabled="saveIsDisabled">Save</Button>
         </footer>
-        <Toast v-if="officeEditStatus" :type="type" />
+        <CollapseTransition easing="ease-in-out">
+          <Toast v-if="officeEditStatus" :type="type" />
+        </CollapseTransition>
     </div>
 </template>
 
 <script>
+import { CollapseTransition } from '@ivanv/vue-collapse-transition';
 import { mapGetters, mapActions } from 'vuex';
 import validadteEmail from '../../../helpers/validateEmail';
 import BodyText from '../../atoms/typography/BodyText.vue';
@@ -96,6 +99,7 @@ export default {
     GenericInput,
     PhoneInput,
     Toast,
+    CollapseTransition,
   },
   data() {
     return {

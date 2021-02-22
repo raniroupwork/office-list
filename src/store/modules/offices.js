@@ -51,7 +51,7 @@ const mutations = {
     state.officesSuccess = status;
     setTimeout(() => {
       state.officesSuccess = !status;
-    }, 1500);
+    }, 2000);
   },
   removeOffice: (state, id) => {
     state.offices = state.offices.filter((office) => office.id !== id);
